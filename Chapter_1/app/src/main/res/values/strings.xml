@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">第一章</string>
+    <string name="edit_message">输入文字……</string>
+    <string name="button_send">确认</string>
+    <string name="system_name">浙江大学学生管理系统</string>
+    <string name="try_to_start_music">别想了，怎么可能会有音频文件呢hhh……</string>
+    <string name="switch_tag">音乐</string>
+</resources>
