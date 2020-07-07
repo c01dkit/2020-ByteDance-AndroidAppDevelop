@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">第二章</string>
+    <string name="text1">粉丝</string>
+    <string name="text2">赞</string>
+    <string name="text3">\@我的</string>
+    <string name="text4">评论</string>
+    <string name="text5">根据上课讲述内容，recycler只维护画面内显示的views，所以删除少量的views统计数目不变。
+        当删除更多views后，统计数目才会减少。</string>
+</resources>
