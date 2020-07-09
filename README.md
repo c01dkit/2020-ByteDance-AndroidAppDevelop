@@ -51,3 +51,25 @@
 
 * 使用intent启动activity的时候注意manifest有没有说明这个activity，否则闪退
 * setText（）接受字符串时是更改内容，如果传入数字会throw new RuntimeException("Stub!")；所以需要Integer.toString转字符串
+
+## Chapter3
+
+### 课程提纲
+
+* fragment：解决了activity需要因为手机和平板不同而重写的问题。将activity视作fragment的容器
+* fragment增强了代码重用性，与activity极其相似，并具有生命周期
+* 一般使用属性动画，因为补间动画只是视觉效果。很少使用帧动画。
+* 一类有趣的动画：[lottie](https://airbnb.io/lottie/#/android?id=from-resraw-lottie_rawres-or-assets-lottie_filename)
+* [属性动画的资料说明](https://www.jianshu.com/p/2412d00a0ce4)
+
+### 课程作业
+
+* 完成使用进度条控制lottie动画的TODO
+* 使用代码方式制作属性动画，实现大小（scaleX、scaleY）的缩放、透明度（alpha）的变化
+* 拓展作业：利用viewpager实现多fragement的滑动切换，利用tablayout添加tab切换功能
+
+### DEBUG
+
+* 使用getSupportFragmentManager().beginTransaction().add(id,new fragment()).commit();的时候，id获取到的container不能和new fragment使用的container相同，否则会闪退
+* 属性动画的ofInt（如backgroudcolor）、ofFloat等需要额外学习，其中第二个参数是字符串，没有自动补全，但是任意输入则报错。修改属性时可以点进xml搜索attributes查找可用的属性名称
+* 关于viewpager2与tablayout[可以参考](https://blog.csdn.net/Utzw0p0985/article/details/103676010)，以及[这个](https://juejin.im/post/5df4aabe6fb9a0161104c8eb) ,其中TabLayoutMediator无法使用的原因是自动添加的gradle采用的是materials1.0.0版本，手动改成1.1.0版本即可使用。
