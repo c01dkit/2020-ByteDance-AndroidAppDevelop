@@ -1,12 +1,14 @@
 package com.example.chapter_3;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
@@ -33,5 +35,17 @@ public class PlaceholderFragment extends Fragment {
 //                // TODO ex3-4：实现动画，将 lottie 控件淡出，列表数据淡入
 //            }
 //        }, 5000);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        Log.i(TAG, "onViewCreated: yes");
+        view.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+            }
+        },5000);
     }
 }

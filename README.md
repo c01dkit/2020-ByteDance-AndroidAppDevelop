@@ -117,3 +117,61 @@
 * 两个重要函数：invalidate(如果布局没变化，只触发draw），requestLayout(触发layout、measure)
 * handler的三种使用方法：新建handler并实现handleMessage方法，可以调度thread；直接new一个runnable实现直接调度runnable；通过handler取消已经发送的massage或runnable
 * runnable实际上会被打包成message。主线程不能执行耗时较长的任务，否则ANR，应用无响应。
+
+## 课外学习
+
+### Java基础知识补充
+
+学安卓开发
+
+### Intent
+
+* Intent可以用于活动之间的消息传递，可以分为显式Intent和隐式Intent两种，创建方法Intent mIntent = new Intent（···）
+  * 显式创建时在new Intent里指定发送方上下文与想要启动的目标活动，例如 new Intent(xxxActivity.this, xxxx.class) 注意需要在manifest里注册相关activity。
+  * 隐式创建的功能更为强大，可以通过过滤器对符合条件的Intent进行调用，可以是其他应用的activity。对应的Intent的构造函数需要传入一个参数，表示action（此时category表示DEFALUT）。比如new Intent(Intent.ACTION_VIEW)，然后可以通过addCategory添加类别。（一个activity可以设定多个类别）。举例在设定action.view后，设定setData(Uri.parse("http://xxxxx"))；然后startActivity(mIntent)可以直接打开浏览器对应网址，不需要自己写什么别的活动。ACTION_VIEW是安卓内置动作，类似的还有ACTION_DIAL
+
+* 利用Intent进行传值时，发送方可以使用putExtra（键，值）添加信息，接收方先使用getInent（）获取接收到的Intent，然后再根据想要拿到的类型，调用getStringExtra（键）获取字符串信息，getIntExtra（键）获取整型信息，等等。
+* 利用Intent获取值是，发送方使用startActivityForResult（intent，code）来启动一个活动，在对应活动里也要创建一个Intent，然后putExtra赋值等任务结束后，使用setResult（RESULT_OK/RESULT_CANCEL, intent）对活动结果进行记录，最后finish()销毁这个活动。销毁后，会自动调用发送方的onActivityResult(int requestCode, int resultCode, Intent data)方法（因此需要重写这个函数）。此函数requestCode是发送方在之前设定的code，resultCode是接收方setResult设定的结果，data就是接收方发送的intent。此函数内部需要对requestCode进行switch，判断是发送方哪个intent的返回结果，然后对resultCode进行判断，再执行其他任务。注：如果接受者没有按预期情况返回（比如没有按预期的按钮返回，而是点击了后退按钮），可以重写onBackPressed方法来执行相同内容。
+
+### Activity 
+
+#### 生命周期、回调方法、生存期
+
+Activity共有7个回调方法，生命周期有6个阶段，可分为四种状态（运行、暂停、停止、销毁）与三个生存期（完整生存期：onCreate-onDestroy；可见生存期：onStart-onStop；前台生存期：onResume-onPause）
+
+* onCreate方法，需要重写，在活动第一次被创建时调用。这个方法应当完成布局加载、事件绑定等初始化操作
+* onStart方法，在活动由不可见变为可见时调用
+* onResume方法，在活动准备好和用户交互时调用，此时活动位于返回栈的栈顶，并处于运行状态
+* onPause方法，在系统准备启动或恢复另一个活动时调用，一般在此方法中释放消耗CPU的资源，并保存关键数据。此方法执行速度应尽可能快，否则影响新栈顶活动使用
+* onStop方法，在活动完全不可见时调用
+* onDestroy方法，在活动被销毁前调用，在此方法内完成内存释放
+* onRestart方法，活动由停止态变为运行态时调用
+
+如果活动A调用活动B，并被完全遮盖，那么A进入停止态。如果此时内存不足A被回收，那么B返回后则会create一个A。但这个A不会保存原来A的临时变量，严重影响用户体验。为解决这一问题，需要重写A的onSaveInstanceState方法，注意到onCreate默认传参就是savedInstanceState。这个参数是一个Bundle类型，使用putString（键）/putInt（键）/getSteing（键）等等方法来读写数据
+
+以下是阿里安卓开发手册部分截图
+
+![image-20200711101408277](README.assets/image-20200711101408277.png)
+
+#### 启动模式
+
+manifest可以指定活动的四种启动方式：standard、singleTop、singleTask、singleInstance，对活动创建的方式进行了设定，getTaskID（）函数可以获取当前使用的返回栈的id
+
+* standard方式：不管返回栈有无当前活动，只要向此活动发送intent，就create一个新的活动，并加入返回栈
+* singleTop方式：向此活动发送Intent时，如果该活动在栈顶，则不create
+* singleTask方式：向次活动发送Intent时，通过适当的入栈出栈来到唯一的活动（保证栈内只有这种活动的一个实例）
+* singleTask方式：此活动将创建自己的返回栈，以便于独立管理（共享栈）
+
+#### 其他
+
+* ```java
+  //隐藏顶部自带的标题栏
+  ActionBar mActionBar = getSupportActionBar();
+  if (mActionBar != null) {
+      mActionBar.hide();
+  }
+  ```
+
+###  参考资料
+
+1. 《我的第一行代码》

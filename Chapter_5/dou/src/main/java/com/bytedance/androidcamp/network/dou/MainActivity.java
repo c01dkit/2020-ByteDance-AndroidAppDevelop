@@ -186,7 +186,7 @@ public class MainActivity extends AppCompatActivity {
         MultipartBody.Part coverImagePart = getMultipartFromUri("cover_image", mSelectedImage);
         MultipartBody.Part videoPart = getMultipartFromUri("video", mSelectedVideo);
         //@TODO 4下面的id和名字替换成自己的
-        miniDouyinService.postVideo("666", "原来大家用的不是真实名字吖……我还以为有校验呢", coverImagePart, videoPart).enqueue(
+        miniDouyinService.postVideo("3180102943", "c01dkit", coverImagePart, videoPart).enqueue(
                 new Callback<PostVideoResponse>() {
                     @Override
                     public void onResponse(Call<PostVideoResponse> call, Response<PostVideoResponse> response) {

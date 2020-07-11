@@ -1,16 +1,13 @@
 package com.example.chapter_3;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.Placeholder;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentStatePagerAdapter;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
@@ -31,39 +28,48 @@ public class Ch3Ex3Activity extends AppCompatActivity {
     private String[] title = {"对话", "通知", "好友列表"};
 
     @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_ch3ex3);
-            TabLayout myTabLayout = findViewById(R.id.my_tab_layout);
-            ViewPager2 myViewPager = findViewById(R.id.my_view_pager);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_ch3ex3);
+        TabLayout myTabLayout = findViewById(R.id.my_tab_layout);
+        ViewPager2 myViewPager = findViewById(R.id.my_view_pager);
 
-            list.add(MyFragment.newInstance(title[0], "暂时没有对话消息哦"));
-            list.add(MyFragment.newInstance(title[1], "暂时没有通知消息哦"));
-            list.add(MyFragment.newInstance(title[2], "好友列表空无一人~"));
+        list.add(MyFragment.newInstance(title[0], "暂时没有对话消息哦"));
+        list.add(MyFragment.newInstance(title[1], "暂时没有通知消息哦"));
+        list.add(MyFragment.newInstance(title[2], "好友列表空无一人~"));
 
-            myViewPager.setAdapter(new MyPagerAdapter(this));
+        myViewPager.setAdapter(new MyPagerAdapter(this));
 
-            new TabLayoutMediator(myTabLayout, myViewPager, new TabLayoutMediator.TabConfigurationStrategy() {
-                @Override
-                public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
-                    tab.setText(title[position]);
-                    }
-                }).attach();
-
-
+        new TabLayoutMediator(myTabLayout, myViewPager, new TabLayoutMediator.TabConfigurationStrategy() {
+            @Override
+            public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
+                tab.setText(title[position]);
             }
-            public class MyPagerAdapter extends FragmentStateAdapter {
-                public MyPagerAdapter(@NonNull FragmentActivity fragmentActivity) {
-                    super(fragmentActivity);
-                }
-                @Override
-                    public Fragment createFragment(int position) {
-                    return list.get(position);
-                }
-                @Override
-                    public int getItemCount() {
-                    return list.size();
-                }
-            }
+        }).attach();
+
+
+
+    }
+
+
+    public class MyPagerAdapter extends FragmentStateAdapter {
+        public MyPagerAdapter(@NonNull FragmentActivity fragmentActivity) {
+            super(fragmentActivity);
+        }
+        @Override
+        public Fragment createFragment(int position) {
+            return list.get(position);
+        }
+        @Override
+        public int getItemCount() {
+            return list.size()-1;
+        }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+    }
 }
 
