@@ -71,5 +71,10 @@
       <option name="name" value="Google" />
       <option name="url" value="https://dl.google.com/dl/android/maven2/" />
     </remote-repository>
+    <remote-repository>
+      <option name="id" value="injected_offline_《第一行代码——Android（第3版）》随书资源" />
+      <option name="name" value="injected_offline_《第一行代码——Android（第3版）》随书资源" />
+      <option name="url" value="file:/$PROJECT_DIR$/../../../《第一行代码——Android（第3版）》随书资源/" />
+    </remote-repository>
   </component>
 </project>

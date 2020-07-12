@@ -2,6 +2,10 @@
 
 2020.7.6\~2020.7.17的大二暑期小学期\~终于要学java和安卓开发了！XD
 
+[toc]
+
+
+
 ### 环境配置说明
 
 * demo项目sync报错unable to find valid certification path to requested target：修改项目级gradle里指定的IDE版本com.android.tools.build:gradle:x.x.x成自己的，然后把阿里云的链接换成google()和jcenter()，如果sync还是报错的话按提示修改项目级别gradle\wrapper下gradle-wrapper.properties里指定的gradle版本（在线状态，需科学上网）
@@ -118,11 +122,20 @@
 * handler的三种使用方法：新建handler并实现handleMessage方法，可以调度thread；直接new一个runnable实现直接调度runnable；通过handler取消已经发送的massage或runnable
 * runnable实际上会被打包成message。主线程不能执行耗时较长的任务，否则ANR，应用无响应。
 
+## 课程大作业
+
+两人组队，实现一个Mini抖音
+
+### 设计思路
+
+* 开机动画：设定SplashActivity为启动时调用的活动，其布局文件采用一个居中显示lottie的加载页面。在onCreate设置延迟2秒的Handler，发送空Intent给MainActivity，并finish销毁自己，防止用户返回上一级时直接返回动画页面。
+* MainActivity：下方状态栏采用[自定义样式的单选按钮组](https://www.jianshu.com/p/0b9d5777abba)，上方放一个FrameLayout当做碎片的容器。
+
 ## 课外学习
 
 ### Java基础知识补充
 
-学安卓开发
+学安卓开发需要前置java基础知识。Kotlin是在Java基础上改写，与其100%相容，而更加注重健壮性，小学期过去后就是用kotlin来做Android开发吧。
 
 ### Intent
 
