@@ -122,6 +122,43 @@
 * handler的三种使用方法：新建handler并实现handleMessage方法，可以调度thread；直接new一个runnable实现直接调度runnable；通过handler取消已经发送的massage或runnable
 * runnable实际上会被打包成message。主线程不能执行耗时较长的任务，否则ANR，应用无响应。
 
+## Chpater5
+
+### 课程提纲
+
+* 网络基础知识
+
+### 课程作业
+
+* 在程序框架基础上完成照片、视频上传与获取功能
+
+### 总结
+
+* 作业只需要加三个函数调用就行。虽然比较水，但是这个DEMO的框架可以应用到最后的大作业上
+
+## Chapter6
+
+### 课程提纲
+
+* room对sqlite数据库进行封装
+
+### 课程作业
+
+* 完成一个TODO应用，在框架的基础上拓展添加记录、删除记录、标记已完成的功能
+
+### 作业成果
+
+<img src="README.assets/image-20200713224648843.png" alt="image-20200713224648843" style="zoom:50%;" />
+
+### 总结
+
+* 这次作业工作量稍大，而且需要用到对[item内部控件进行操作](https://blog.csdn.net/qq_38225558/article/details/80608527)的技术：可以学习一下java的“接口”的概念
+* 关于使用[room对来封装数据库的相关操作](https://www.jianshu.com/p/7354d5048597)  [关于版本升级](https://blog.csdn.net/yonghuming_jesse/article/details/98037118?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase)
+* [文字样式之删除线](https://www.jb51.net/article/136661.htm)
+* 取消checkbox的点击动画：android:background="@android:color/transparent"
+
+
+
 ## 课程大作业
 
 两人组队，实现一个Mini抖音

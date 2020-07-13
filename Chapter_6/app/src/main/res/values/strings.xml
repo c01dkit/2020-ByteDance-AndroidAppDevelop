@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">todolist</string>
+    <string name="title_activity_todo_list">第六章</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="hint_insert_complete">初始化完成</string>
+    <string name="commit_done">提交</string>
+    <string name="hint_of_input">请填写计划……</string>
+    <string name="hint_insert_one_complete">成功插入</string>
+</resources>
