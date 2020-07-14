@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">第七章</string>
+    <string name="Welcome">第七章作业</string>
+    <string name="check_images">点击此处查看图片</string>
+    <string name="check_videos">点击此处查看视频</string>
+    <string name="fresh_photo">刷新一下</string>
+    <string name="waiting">每张图片均随机从网络获取，若该图片为高清品质，则可能需要较长加载时间，请耐心等待</string>
+    <string name="start">播放</string>
+    <string name="pause">暂停</string>
+    <string name="videostart">00:00</string>
+    <string name="addVideo">https://lf1-hscdn-tos.pstatp.com/obj/developer-baas/baas/ttq7hk/6fe3b10faa4719b9_1594387491282.mp4</string>
+    <string name="load">加载网络视频</string>
+    <string name="note">请先点击“播放”以启动内置视频（两分十秒）并激活进度条，其不需要加载网络视频也能直接播放。长按视频也可以暂停、播放。点击“加载网络视频”可以重新加载视频。
+    为方便演示，输入栏已放置好了一个链接；您也可以用其他链接替换。</string>
+</resources>

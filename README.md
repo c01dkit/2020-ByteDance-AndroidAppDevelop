@@ -157,7 +157,70 @@
 * [文字样式之删除线](https://www.jb51.net/article/136661.htm)
 * 取消checkbox的点击动画：android:background="@android:color/transparent"
 
+## Chapter7
 
+### 课程提纲
+
+* 图片基础知识
+* 视频基础知识
+
+### 课程作业
+
+* 开发一个可以展示图片、可以播放视频的APP
+* 1、使用Glide展示网络图片
+  * 加载中、加载失败时有占位图
+  * 实现图片圆角功能（可选）
+  * 渐变展示（可选）
+* 2、播放网络视频
+  * 播放、暂停功能
+  * 播放进度条展示（包括时间显示）
+  * 进度条可以点击、滑动，跳转到指定位置（可选）
+  * 横竖屏切换、横屏时展示全屏模式（可选）
+  * 将app注册为播放器类型(Action为ACTION_VIEW，Data为Uri，Type为其MIME类型)，点击打开系统视频文件时，可以选择使用自制播放器；（可选）
+
+### DEBUG
+
+* [随机获取一张图片](https://uploadbeta.com/api/pictures/random/)  这个网站的[API说明](https://uploadbeta.com/picture-gallery/faq.php#api) 
+* 强制设定glide不采用缓存文件
+
+```java
+ Glide.with(AddComActivity.this)
+                    .load(imgSave)
+                    .skipMemoryCache(true)//跳过内存缓存
+                    .diskCacheStrategy(DiskCacheStrategy.NONE)//不要在disk硬盘缓存
+                    .into(imgAddCom);
+```
+
+* [videoview来处理视频播放问题](https://www.cnblogs.com/plokmju/p/android_VideoView.html)
+* [关于处理横竖屏的方式](https://blog.csdn.net/zhuziyue1202/article/details/51501692)
+  * 直接在布局文件设定orientation可以阻止横竖屏
+  * 在manifest设置android:configChanges="orientation|screenSize"可以以自定义函数方式来处理横竖屏
+
+```java
+@Override
+public void onConfigurationChanged(Configuration newConfig) {
+    super.onConfigurationChanged(newConfig);
+
+    if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+        Toast.makeText(this, "landscape", Toast.LENGTH_SHORT).show();
+    } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
+        Toast.makeText(this, "portrait", Toast.LENGTH_SHORT).show();
+    }
+}
+
+```
+
+
+
+* 复习一下handler的使用方式
+
+```java
+Handler handler = new Handler(); // 先创建一个Handler对象
+handler.postDelay(new Runnable...).start(); // 以延迟调用为例，如果runnable又调用postDelay，则循环。
+```
+
+* 本来采用wrap_content包装videoview导致播放前整个盖满（在宽度match_parent），但是在onCreate添加videoView.setVideoPath(getVideoPath(R.raw.tokyo_university));以后反而自动调整高度大小了，就很奇怪。
+* [Acitivity使用的intent实例](https://www.cnblogs.com/guop/p/5067342.html)
 
 ## 课程大作业
 
