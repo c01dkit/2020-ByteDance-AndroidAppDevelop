@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">第八章</string>
+    <string name="recording">录制视频</string>
+    <string name="record_start">开始录制</string>
+    <string name="record_stop">结束录制</string>
+    <string name="button">切换摄像头</string>
+    <string name="zoom">对焦</string>
+</resources>

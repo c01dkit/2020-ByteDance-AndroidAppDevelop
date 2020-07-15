@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">第八章</string>
+    <string name="recording">录制视频</string>
+    <string name="record_start">开始</string>
+    <string name="record_pause">暂停</string>
+    <string name="record_stop">结束录制</string>
+    <string name="record_resume">继续</string>
+</resources>

@@ -193,7 +193,7 @@
 
 * [videoview来处理视频播放问题](https://www.cnblogs.com/plokmju/p/android_VideoView.html)
 * [关于处理横竖屏的方式](https://blog.csdn.net/zhuziyue1202/article/details/51501692)
-  * 直接在布局文件设定orientation可以阻止横竖屏
+  * 在manifest设定screenOrientation可以阻止横竖屏
   * 在manifest设置android:configChanges="orientation|screenSize"可以以自定义函数方式来处理横竖屏
 
 ```java
@@ -221,6 +221,21 @@ handler.postDelay(new Runnable...).start(); // 以延迟调用为例，如果run
 
 * 本来采用wrap_content包装videoview导致播放前整个盖满（在宽度match_parent），但是在onCreate添加videoView.setVideoPath(getVideoPath(R.raw.tokyo_university));以后反而自动调整高度大小了，就很奇怪。
 * [Acitivity使用的intent实例](https://www.cnblogs.com/guop/p/5067342.html)
+
+## Chapter8
+
+### 课程提纲
+
+* 介绍调用系统相机、系统录制
+* 介绍自定义相机、自定义录制
+
+### 课程作业
+
+* 完成一个自定义录制，支持变焦、闪光灯、暂停、延迟录制
+
+### DEBUG
+
+* 原有的android.hardware.Camera类已经被废弃，[新的Camera2](https://www.jianshu.com/p/73fed068a795)  [相关说明](https://blog.csdn.net/hexingen/article/details/79290046)
 
 ## 课程大作业
 
