@@ -2,6 +2,7 @@ package com.example.chapter_3;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,14 +27,14 @@ import java.util.List;
 public class Ch3Ex3Activity extends AppCompatActivity {
     private List<Fragment> list = new ArrayList<>();
     private String[] title = {"对话", "通知", "好友列表"};
-
+    private static final String TAG = "CH3";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ch3ex3);
         TabLayout myTabLayout = findViewById(R.id.my_tab_layout);
         ViewPager2 myViewPager = findViewById(R.id.my_view_pager);
-
+        Log.d(TAG, "onCreate: ");
         list.add(MyFragment.newInstance(title[0], "暂时没有对话消息哦"));
         list.add(MyFragment.newInstance(title[1], "暂时没有通知消息哦"));
         list.add(MyFragment.newInstance(title[2], "好友列表空无一人~"));

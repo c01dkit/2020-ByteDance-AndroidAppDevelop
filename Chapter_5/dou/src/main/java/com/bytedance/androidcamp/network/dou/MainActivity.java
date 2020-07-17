@@ -3,6 +3,7 @@ package com.bytedance.androidcamp.network.dou;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -177,34 +178,37 @@ public class MainActivity extends AppCompatActivity {
     private MultipartBody.Part getMultipartFromUri(String name, Uri uri) {
         File f = new File(ResourceUtils.getRealPath(MainActivity.this, uri));
         RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), f);
+        Log.d(TAG, "getMultipartFromUri: "+ResourceUtils.getRealPath(MainActivity.this, uri));
         return MultipartBody.Part.createFormData(name, f.getName(), requestFile);
     }
 
     private void postVideo() {
         mBtn.setText("POSTING...");
         mBtn.setEnabled(false);
+        Log.d(TAG, "postVideo: "+mSelectedVideo);
+        Log.d(TAG, "postImage: "+mSelectedImage);
         MultipartBody.Part coverImagePart = getMultipartFromUri("cover_image", mSelectedImage);
         MultipartBody.Part videoPart = getMultipartFromUri("video", mSelectedVideo);
         //@TODO 4下面的id和名字替换成自己的
-        miniDouyinService.postVideo("3180102943", "c01dkit", coverImagePart, videoPart).enqueue(
-                new Callback<PostVideoResponse>() {
-                    @Override
-                    public void onResponse(Call<PostVideoResponse> call, Response<PostVideoResponse> response) {
-                        if (response.body() != null) {
-                            Toast.makeText(MainActivity.this, response.body().toString(), Toast.LENGTH_SHORT)
-                                    .show();
-                        }
-                        mBtn.setText(R.string.select_an_image);
-                        mBtn.setEnabled(true);
-                    }
-
-                    @Override
-                    public void onFailure(Call<PostVideoResponse> call, Throwable throwable) {
-                        mBtn.setText(R.string.select_an_image);
-                        mBtn.setEnabled(true);
-                        Toast.makeText(MainActivity.this, throwable.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
+//        miniDouyinService.postVideo("test", "test", coverImagePart, videoPart).enqueue(
+//                new Callback<PostVideoResponse>() {
+//                    @Override
+//                    public void onResponse(Call<PostVideoResponse> call, Response<PostVideoResponse> response) {
+//                        if (response.body() != null) {
+//                            Toast.makeText(MainActivity.this, response.body().toString(), Toast.LENGTH_SHORT)
+//                                    .show();
+//                        }
+//                        mBtn.setText(R.string.select_an_image);
+//                        mBtn.setEnabled(true);
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Call<PostVideoResponse> call, Throwable throwable) {
+//                        mBtn.setText(R.string.select_an_image);
+//                        mBtn.setEnabled(true);
+//                        Toast.makeText(MainActivity.this, throwable.getMessage(), Toast.LENGTH_SHORT).show();
+//                    }
+//                });
     }
 
     public void fetchFeed(View view) {
@@ -224,9 +228,9 @@ public class MainActivity extends AppCompatActivity {
                                 + mVideos.get(i).videoUrl + "   "
                                 + mVideos.get(i).imageHeight + "   "
                                 + mVideos.get(i).imageWidth);
-                        if (!"3180102943".equals(mVideos.get(i).studentId)) {
-                            mVideos.remove(i--);
-                        }
+//                        if (!"3180102943".equals(mVideos.get(i).studentId)) {
+//                            mVideos.remove(i--);
+//                        }
                     }
                     mRv.getAdapter().notifyDataSetChanged();
                 }

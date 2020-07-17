@@ -10,6 +10,7 @@
 
 * demo项目sync报错unable to find valid certification path to requested target：修改项目级gradle里指定的IDE版本com.android.tools.build:gradle:x.x.x成自己的，然后把阿里云的链接换成google()和jcenter()，如果sync还是报错的话按提示修改项目级别gradle\wrapper下gradle-wrapper.properties里指定的gradle版本（在线状态，需科学上网）
 * [如何更改Android Studio默认的C盘保存文件的设定](https://blog.csdn.net/Jeff_YaoJie/article/details/80499278?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-5.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-5.nonecase)
+* AS输出栏[方块字乱码解决方案](https://blog.csdn.net/zhang5690800/article/details/104502632)
 
 ## Chapter1
 
@@ -245,6 +246,18 @@ handler.postDelay(new Runnable...).start(); // 以延迟调用为例，如果run
 
 * 开机动画：设定SplashActivity为启动时调用的活动，其布局文件采用一个居中显示lottie的加载页面。在onCreate设置延迟2秒的Handler，发送空Intent给MainActivity，并finish销毁自己，防止用户返回上一级时直接返回动画页面。
 * MainActivity：下方状态栏采用[自定义样式的单选按钮组](https://www.jianshu.com/p/0b9d5777abba)，上方放一个FrameLayout当做碎片的容器。
+
+### DEBUG
+
+* 获取文件路径log总是没有提示，以为是语法没学好，静态函数需要创建类实例？实际上是筛选log的时候加了TAG限定MainActivity，结果那个函数是另外一个类的……吐血了
+* 不知道为什么，练习题的时候可以正常读取本地照片和视频的绝对路径，但是大作业就会返回空地址，即便是使用相同的fileutils，内部返回的cursor也不一样……最后选择了现拍现用的方法
+* login放里面返回后不能被onresultActivity捕获：不要新建intent，用getintent获取发送来的intent再setresult
+
+## 课程总结
+
+十天的密集训练结束了……回想那段每天从早上忙到晚上的生活，仿佛刚刚发生在昨天（好吧就是昨天）确实学到了很多新的东西，但更感觉像是打开了新世界的大门，还有很多宝藏等待自己挖掘，接下来的路才刚刚开始呐！总结而言最后的大作业确实应该从第二天开始做，每天都把新增的部分加到大作业里，不然最后这一点时间只能把之前的小实验拼成大作业，没有时间做拓展了（但是实际上之前的小实验也能一做一天啊喂！）。最后大作业也太赶了，进度如下↓
+
+![image-20200717114008854](README.assets/image-20200717114008854.png)
 
 ## 课外学习
 
